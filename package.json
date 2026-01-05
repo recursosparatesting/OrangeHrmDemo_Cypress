@@ -1,0 +1,20 @@
+{
+  "name": "orangehrmdemo_cypress",
+  "version": "1.0.0",
+  "description": "Prueba UI haciendo Login a Orange HRM Demo utilizando Cypress",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "test:chrome": "cypress run --browser chrome",
+    "test:firefox": "cypress run --browser firefox",
+    "test:login": "cypress run --spec 'cypress/e2e/login.cy.js' --browser chrome"
+  },
+  "keywords": ["cypress"],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "cypress": "^15.8.1"
+  }
+}

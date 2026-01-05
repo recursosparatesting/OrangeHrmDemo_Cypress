@@ -1,0 +1,20 @@
+name: Pruebas Orange HRMDemo con Cypress
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Ejecutar Cypress
+        uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+     
