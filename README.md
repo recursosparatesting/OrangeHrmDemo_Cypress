@@ -3,6 +3,10 @@ La ATM de este repositorio realizar una prueba de login al sitio Orange HRM Demo
 Esta ATM fue desarrollada en Cypress utilizando la tipica separacion de capas del Patron de diseño POM.     
 la ATM permite ingresar los valores de usuario y contraseña mediante variables. Esto se indica en las instrucciones de Pipeline.
 
+Tambien se puede indicar si se quiere ejecutar el caso que valida ingreso exitoso con las credenciales correctas, o el caso que valida el mensaje de error que debe aparecer cuando las credenciales son incorrectas.
+
+Igualmente se puede indicar si se quiere probar con google chrome y firefox.
+
 
 
 ## 📋 Requisitos
@@ -19,11 +23,17 @@ Instalación Inteligente: Ejecuta npm install o npm ci automáticamente.
 
 Gestión de Caché: La Action guarda en la memoria de GitHub las carpetas pesadas (como node_modules y el binario de Cypress). En cada ejecución, en lugar de descargar todo de internet, lo recupera de la caché, ahorrando minutos de espera.    
 
-El pipeline se ejecuta cuando se realiza un push y en este caso toma las variables por defecto:    
+El pipeline se ejecuta cuando se realiza un push y en este caso toma las variables por defecto, sin embargo estas variables se pueden cambiar:    
+navegador: chrome 
+prueba a ejecutar: credencialesCorrectas 
 usuario: Admin   
 contraseña: admin123    
 
-El pipeline tambien se puede ejecutar a peticion, llendo a Actions - Pruebas Orange HRMDemo con Cypress  -- Run workflow.    Alli se pueden cambiar estos valores para realizar pruebas negativas.
+El pipeline tambien se puede ejecutar a peticion, llendo a Actions - Pruebas Orange HRMDemo con Cypress  -- Run workflow.    Alli se pueden cambiar estos valores: 
+navegador: chrome o firefox
+prueba a ejecutar: credencialesCorrectas o credencialesIncorrectas
+usuario: loginIncorrecto   
+contraseña: passwordIncorrecto    
 
 
 
@@ -35,8 +45,8 @@ git clone https://github.com/recursosparatesting/OrangeHrmDemo_Cypress.git
 Una vez en la carpeta del proyecto clonado, ejecuta los siguientes comandos:    
 
 npm install     
-npx cypress run --env USER_NAME=prueba,USER_PASS=prueba    
+npm run test:firefox -- --env USER_NAME=Aple,USER_PASS=ad3,TIPO_PRUEBA=credencialesIncorrectas
 
-donde USER_NAME es el usuario y USER_PASS es la contraseña que el robot utilizara para ejecutar la prueba.   
+donde USER_NAME es el usuario, USER_PASS es la contraseña  y TIPO_PRUEBA es el caso de prueba con lo cual se va a ejecutar.   
 
 Tener en cuenta: En la maquina donde se esta clonando el repositorio, debe estar instalado Node.js y NPM.    
