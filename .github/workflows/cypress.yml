@@ -38,3 +38,11 @@ jobs:
         env:
           CYPRESS_USER_NAME: ${{ github.event.inputs.usuario || 'Admin' }}
           CYPRESS_USER_PASS: ${{ github.event.inputs.password || 'admin123' }}
+
+      - name: Generar Resumen
+        if: always() 
+        run: |
+          echo "### 📊 Resumen de Ejecución" >> $GITHUB_STEP_SUMMARY
+          echo "- **Navegador:** ${{ github.event.inputs.navegador || 'chrome' }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Usuario enviado:** ${{ github.event.inputs.usuario || 'Admin' }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Resultado:** ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
