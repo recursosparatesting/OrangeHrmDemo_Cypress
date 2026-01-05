@@ -53,8 +53,8 @@ jobs:
         if: always() 
         run: |
           echo "### 📊 Resumen de Ejecución" >> $GITHUB_STEP_SUMMARY
-          CYPRESS_TIPO_PRUEBA: ${{ github.event.inputs.prueba_a_ejecutar || 'credencialesCorrectas' }}
           echo "- **Navegador:** ${{ github.event.inputs.navegador || 'chrome' }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Caso ejecutado:** ${{ github.event.inputs.prueba_a_ejecutar || 'credencialesCorrectas' }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Usuario enviado:** ${{ github.event.inputs.usuario || 'Admin' }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Password enviado:** ${{ github.event.inputs.password || 'admin123' }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Resultado:** ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
