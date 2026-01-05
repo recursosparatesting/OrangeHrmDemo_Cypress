@@ -1,6 +1,6 @@
 # 📋 Prueba UI al sitio Orange HRM Demo con Cypress
 La ATM de este repositorio realizar una prueba de login al sitio Orange HRM Demo.    
-Esta ATM fue desarrollada utilizando Cypress utilizando la tipica separacion de capas del Patron de diseño POM.     
+Esta ATM fue desarrollada en Cypress utilizando la tipica separacion de capas del Patron de diseño POM.     
 
 
 

@@ -5,6 +5,16 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+  workflow_dispatch:
+    inputs:
+      usuario:
+        description: 'Usuario'
+        required: true
+        default: 'Admin'
+      password:
+        description: 'Password'
+        required: true
+        default: 'admin123'
 
 jobs:
   cypress-run:
@@ -17,4 +27,6 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           browser: chrome
-     
+        env:
+          CYPRESS_USER_NAME: ${{ github.event.inputs.usuario || 'user_push_default' }}
+          CYPRESS_USER_PASS: ${{ github.event.inputs.password || 'pass_push_default' }}

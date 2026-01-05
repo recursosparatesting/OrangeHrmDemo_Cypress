@@ -7,7 +7,7 @@ describe('Pruebas de Login con POM', () => {
   });
 
   it('Debería iniciar sesión con credenciales válidas', () => {
-    loginPage.submitLogin('Admin', 'admin123');
+    loginPage.submitLogin();
     
     cy.url().should('include', '/dashboard');
   });

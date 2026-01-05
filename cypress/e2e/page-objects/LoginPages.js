@@ -19,7 +19,9 @@ class LoginPage {
     this.elements.loginBtn().click();
   }
 
-  submitLogin(user, pass) {
+  submitLogin() {
+    const user = Cypress.env('USER_NAME') || 'admin_por_defecto';
+    const pass = Cypress.env('USER_PASS') || 'password_por_defecto';
     this.typeUsername(user);
     this.typePassword(pass);
     this.clickLogin();
