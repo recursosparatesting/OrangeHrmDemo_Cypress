@@ -4,11 +4,10 @@
   "description": "Prueba UI haciendo Login a Orange HRM Demo utilizando Cypress",
   "main": "index.js",
   "scripts": {
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run",
-    "test:chrome": "cypress run --browser chrome",
-    "test:firefox": "cypress run --browser firefox",
-    "test:login": "cypress run --spec 'cypress/e2e/login.cy.js' --browser chrome"
+  "cy:open": "cypress open",
+  "cy:run": "cypress run",
+  "test:chrome": "cypress run --browser chrome",
+  "test:firefox": "cypress run --browser firefox"
   },
   "keywords": ["cypress"],
   "author": "",

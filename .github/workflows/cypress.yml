@@ -7,6 +7,14 @@ on:
     branches: [ main ]
   workflow_dispatch:
     inputs:
+      navegador:
+        description: 'Selecciona el navegador'
+        required: true
+        default: 'chrome'
+        type: choice
+        options:
+          - chrome
+          - firefox
       usuario:
         description: 'Usuario'
         required: true
@@ -26,7 +34,7 @@ jobs:
       - name: Ejecutar Cypress
         uses: cypress-io/github-action@v6
         with:
-          browser: chrome
+          browser: ${{ github.event.inputs.navegador || 'chrome' }}
         env:
-          CYPRESS_USER_NAME: ${{ github.event.inputs.usuario || 'user_push_default' }}
-          CYPRESS_USER_PASS: ${{ github.event.inputs.password || 'pass_push_default' }}
+          CYPRESS_USER_NAME: ${{ github.event.inputs.usuario || 'Admin' }}
+          CYPRESS_USER_PASS: ${{ github.event.inputs.password || 'admin123' }}

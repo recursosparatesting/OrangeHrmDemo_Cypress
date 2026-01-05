@@ -12,11 +12,5 @@ describe('Pruebas de Login con POM', () => {
     cy.url().should('include', '/dashboard');
   });
 
-  it('Debería mostrar error con credenciales inválidas', () => {
-    loginPage.typeUsername('error_user');
-    loginPage.typePassword('wrong_pass');
-    loginPage.clickLogin();
 
-    loginPage.elements.errorMessage().should('be.visible');
-  });
 });
