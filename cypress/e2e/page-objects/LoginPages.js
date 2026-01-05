@@ -19,13 +19,17 @@ class LoginPage {
     this.elements.loginBtn().click();
   }
 
-  submitLogin() {
-    const user = Cypress.env('USER_NAME') || 'Admin';
-    const pass = Cypress.env('USER_PASS') || 'admin123';
+  submitLogin(user, pass) {
     this.typeUsername(user);
     this.typePassword(pass);
     this.clickLogin();
   }
+
+  validarMensajeError() {
+    this.elements.errorMessage()
+      .should('be.visible');
+  }
+
 }
 
 export const loginPage = new LoginPage();

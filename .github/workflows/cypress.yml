@@ -15,6 +15,15 @@ on:
         options:
           - chrome
           - firefox
+      prueba_a_ejecutar:
+        description: '¿Qué prueba quieres correr?'
+        required: true
+        default: 'credencialesCorrectas'
+        type: choice
+        options:
+          - credencialesCorrectas
+          - credencialesIncorrectas
+      
       usuario:
         description: 'Usuario'
         required: true
@@ -36,6 +45,7 @@ jobs:
         with:
           browser: ${{ github.event.inputs.navegador || 'chrome' }}
         env:
+          CYPRESS_TIPO_PRUEBA: ${{ github.event.inputs.prueba_a_ejecutar || 'credencialesCorrectas' }}
           CYPRESS_USER_NAME: ${{ github.event.inputs.usuario || 'Admin' }}
           CYPRESS_USER_PASS: ${{ github.event.inputs.password || 'admin123' }}
 
@@ -43,6 +53,8 @@ jobs:
         if: always() 
         run: |
           echo "### 📊 Resumen de Ejecución" >> $GITHUB_STEP_SUMMARY
+          CYPRESS_TIPO_PRUEBA: ${{ github.event.inputs.prueba_a_ejecutar || 'credencialesCorrectas' }}
           echo "- **Navegador:** ${{ github.event.inputs.navegador || 'chrome' }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Usuario enviado:** ${{ github.event.inputs.usuario || 'Admin' }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Password enviado:** ${{ github.event.inputs.password || 'admin123' }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Resultado:** ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
